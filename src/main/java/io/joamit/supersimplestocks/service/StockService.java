@@ -19,6 +19,19 @@ public class StockService {
         this.stockRepository = stockRepository;
     }
 
+    Double calculatePERatio(String symbol, Double marketPrice) {
+        Double peRatio = 0D;
+        validateInputs(symbol, marketPrice);
+        Optional<Stock> result = this.stockRepository.findById(symbol);
+        if (result.isPresent()) {
+            Stock stock = result.get();
+            peRatio = marketPrice / stock.getLastDividend();
+        } else {
+            throw new IllegalStateException("Could not find stock with symbol [ " + symbol + " ]. Please try again with the correct symbol!!");
+        }
+        return peRatio;
+    }
+
     Double calculateDividendYield(String symbol, Double marketPrice) {
         Double dividendYield = 0D;
         validateInputs(symbol, marketPrice);
@@ -46,6 +59,6 @@ public class StockService {
     private void validateInputs(String symbol, Double marketPrice) {
         if (StringUtils.isEmpty(symbol)) throw new IllegalStateException("Stock symbol can not be empty!");
         if (marketPrice == null)
-            throw new IllegalStateException("Market price is require for dividend yield calculation!");
+            throw new IllegalStateException("Market price is require for dividend yield and P/E ratio calculation!");
     }
 }
