@@ -75,4 +75,8 @@ public class StockService {
         if (marketPrice == null)
             throw new IllegalStateException("Market price is require for dividend yield and P/E ratio calculation!");
     }
+
+    public List<Stock> fetchAllStocks() {
+        return this.stockRepository.findAll();
+    }
 }

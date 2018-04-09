@@ -1,5 +1,6 @@
 package io.joamit.supersimplestocks.controller;
 
+import io.joamit.supersimplestocks.domain.Stock;
 import io.joamit.supersimplestocks.service.StockService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Stock controller to handle all the operations based on Stock domain,
@@ -75,5 +78,20 @@ public class StockController {
         Double gbceAllShareIndex = this.stockService.calculateGBCEAllShareIndex();
         LOGGER.info("Request successfully processed.");
         return gbceAllShareIndex;
+    }
+
+    @ApiOperation(value = "Fetch All Stocks.", response = Stock[].class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully processed request."),
+            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+    })
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public List<Stock> fetchAllTrades() {
+        LOGGER.info("Received request to fetch all trades.");
+        List<Stock> trades = this.stockService.fetchAllStocks();
+        LOGGER.info("Processed request successfully!");
+        return trades;
     }
 }

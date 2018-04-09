@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 public class TradeService {
 
+    public static final DateTime INFINITY_DATE = new DateTime(9999, 12, 31, 11, 59, 59);
     private TradeRepository tradeRepository;
 
     @Autowired
@@ -20,6 +21,8 @@ public class TradeService {
 
     public Trade recordTrade(Trade trade) {
         validateTrade(trade);
+        trade.setCreatedAt(new DateTime());
+        trade.setClosedAt(INFINITY_DATE);
         return this.tradeRepository.save(trade);
     }
 
@@ -36,5 +39,9 @@ public class TradeService {
         if (trade.getPrice() == null) throw new IllegalStateException("Trade must have a price!");
         if (trade.getQuantity() == null) throw new IllegalStateException("Trade must have a quantity!");
         if (trade.getDirection() == null) throw new IllegalStateException("Trade must have a direction!");
+    }
+
+    public List<Trade> fetchAllTrades() {
+        return this.tradeRepository.findAll();
     }
 }

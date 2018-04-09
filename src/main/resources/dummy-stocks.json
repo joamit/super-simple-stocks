@@ -1,0 +1,24 @@
+[
+  {
+    "id": "TEA",
+    "type": "COMMON",
+    "lastDividend": 0,
+    "parValue": 100,
+    "price": 25
+  },
+  {
+    "id": "POP",
+    "type": "COMMON",
+    "lastDividend": 8,
+    "parValue": 100,
+    "price": 93
+  },
+  {
+    "id": "GIN",
+    "type": "PREFERRED",
+    "lastDividend": 8,
+    "fixedDividend": 2,
+    "parValue": 100,
+    "price": 142
+  }
+]
