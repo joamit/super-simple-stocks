@@ -1,10 +1,14 @@
 package io.joamit.supersimplestocks.domain;
 
+import org.joda.time.DateTime;
+
 public final class TradeBuilder {
     private String id;
     private Long quantity;
     private Direction direction;
     private Double price;
+    private DateTime createdAt;
+    private DateTime closedAt;
 
     private TradeBuilder() {
     }
@@ -33,12 +37,24 @@ public final class TradeBuilder {
         return this;
     }
 
+    public TradeBuilder withCreatedAt(DateTime createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    public TradeBuilder withClosedAt(DateTime closedAt) {
+        this.closedAt = closedAt;
+        return this;
+    }
+
     public Trade build() {
         Trade trade = new Trade();
         trade.setId(id);
         trade.setQuantity(quantity);
         trade.setDirection(direction);
         trade.setPrice(price);
+        trade.setCreatedAt(createdAt);
+        trade.setClosedAt(closedAt);
         return trade;
     }
 }
