@@ -24,6 +24,14 @@ public class SuperSimpleStocksApplication {
     }
 
 
+    /**
+     * Initialize the application with some dummy trade and stock values.
+     *
+     * @param tradeRepository to save dummy trades
+     * @param stockRepository to save dummy stocks
+     * @return cmd runner instance
+     * @throws IOException
+     */
     @Bean
     CommandLineRunner init(TradeRepository tradeRepository, StockRepository stockRepository) throws IOException {
         return evt -> {
