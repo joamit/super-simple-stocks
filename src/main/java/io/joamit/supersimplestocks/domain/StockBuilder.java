@@ -5,7 +5,7 @@ public final class StockBuilder {
     private StockType type;
     private Double lastDividend;
     private Double fixedDividend;
-    private Double value;
+    private Double parValue;
 
     private StockBuilder() {
     }
@@ -34,8 +34,8 @@ public final class StockBuilder {
         return this;
     }
 
-    public StockBuilder withValue(Double value) {
-        this.value = value;
+    public StockBuilder withParValue(Double parValue) {
+        this.parValue = parValue;
         return this;
     }
 
@@ -45,7 +45,7 @@ public final class StockBuilder {
         stock.setType(type);
         stock.setLastDividend(lastDividend);
         stock.setFixedDividend(fixedDividend);
-        stock.setValue(value);
+        stock.setParValue(parValue);
         return stock;
     }
 }
