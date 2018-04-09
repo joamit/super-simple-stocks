@@ -19,7 +19,7 @@ public class StockService {
         this.stockRepository = stockRepository;
     }
 
-    Double calculatePERatio(String symbol, Double marketPrice) {
+    public Double calculatePERatio(String symbol, Double marketPrice) {
         Double peRatio = 0D;
         validateInputs(symbol, marketPrice);
         Optional<Stock> result = this.stockRepository.findById(symbol);
@@ -32,7 +32,7 @@ public class StockService {
         return peRatio;
     }
 
-    Double calculateDividendYield(String symbol, Double marketPrice) {
+    public Double calculateDividendYield(String symbol, Double marketPrice) {
         Double dividendYield = 0D;
         validateInputs(symbol, marketPrice);
         Optional<Stock> result = this.stockRepository.findById(symbol);
