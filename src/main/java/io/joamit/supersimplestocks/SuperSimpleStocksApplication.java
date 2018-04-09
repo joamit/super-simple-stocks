@@ -1,0 +1,12 @@
+package io.joamit.supersimplestocks;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SuperSimpleStocksApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SuperSimpleStocksApplication.class, args);
+    }
+}
