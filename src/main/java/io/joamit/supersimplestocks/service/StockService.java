@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,8 +21,19 @@ public class StockService {
         this.stockRepository = stockRepository;
     }
 
+    public Double calculateGBCEAllShareIndex() {
+        Iterable<Stock> result = this.stockRepository.findAll();
+        List<Stock> stocks = new ArrayList<>();
+        result.forEach(stocks::add);
+        Double total = 1D;
+        for (Stock stock : stocks) {
+            total *= stock.getPrice();
+        }
+        return Math.sqrt(total);
+    }
+
     public Double calculatePERatio(String symbol, Double marketPrice) {
-        Double peRatio = 0D;
+        Double peRatio;
         validateInputs(symbol, marketPrice);
         Optional<Stock> result = this.stockRepository.findById(symbol);
         if (result.isPresent()) {

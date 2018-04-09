@@ -7,17 +7,8 @@ public class Stock {
     private Double lastDividend;
     private Double fixedDividend;
     private Double parValue;
+    private Double price;
 
-    public Stock() {
-    }
-
-    public Stock(String symbol, StockType type, Double lastDividend, Double fixedDividend, Double parValue) {
-        this.symbol = symbol;
-        this.type = type;
-        this.lastDividend = lastDividend;
-        this.fixedDividend = fixedDividend;
-        this.parValue = parValue;
-    }
 
     public String getSymbol() {
         return symbol;
@@ -59,5 +50,11 @@ public class Stock {
         this.parValue = parValue;
     }
 
+    public Double getPrice() {
+        return price;
+    }
 
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 }

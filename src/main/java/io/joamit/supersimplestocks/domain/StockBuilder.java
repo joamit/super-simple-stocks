@@ -6,6 +6,7 @@ public final class StockBuilder {
     private Double lastDividend;
     private Double fixedDividend;
     private Double parValue;
+    private Double price;
 
     private StockBuilder() {
     }
@@ -39,6 +40,11 @@ public final class StockBuilder {
         return this;
     }
 
+    public StockBuilder withPrice(Double price) {
+        this.price = price;
+        return this;
+    }
+
     public Stock build() {
         Stock stock = new Stock();
         stock.setSymbol(symbol);
@@ -46,6 +52,7 @@ public final class StockBuilder {
         stock.setLastDividend(lastDividend);
         stock.setFixedDividend(fixedDividend);
         stock.setParValue(parValue);
+        stock.setPrice(price);
         return stock;
     }
 }

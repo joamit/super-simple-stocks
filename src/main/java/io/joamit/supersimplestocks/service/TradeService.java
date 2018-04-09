@@ -4,9 +4,11 @@ import io.joamit.supersimplestocks.domain.Trade;
 import io.joamit.supersimplestocks.repository.TradeRepository;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TradeService {
 
     private TradeRepository tradeRepository;
