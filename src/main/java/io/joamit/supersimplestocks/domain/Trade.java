@@ -2,32 +2,32 @@ package io.joamit.supersimplestocks.domain;
 
 import org.joda.time.DateTime;
 
-public class Trade {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-    private String id;
+@Entity
+public class Trade {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private Long quantity;
     private Direction direction;
     private Double price;
     private DateTime createdAt;
     private DateTime closedAt;
 
-    public Trade(String id, Long quantity, Direction direction, Double price, DateTime createdAt, DateTime closedAt) {
-        this.id = id;
-        this.quantity = quantity;
-        this.direction = direction;
-        this.price = price;
-        this.createdAt = createdAt;
-        this.closedAt = closedAt;
-    }
 
     public Trade() {
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

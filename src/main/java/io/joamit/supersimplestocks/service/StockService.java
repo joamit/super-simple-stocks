@@ -51,14 +51,15 @@ public class StockService {
         Optional<Stock> result = this.stockRepository.findById(symbol);
         if (result.isPresent()) {
             Stock stock = result.get();
-            dividendYield = calculateDividendYield(marketPrice, dividendYield, stock);
+            dividendYield = calculateDividendYield(marketPrice, stock);
         } else {
             throw new IllegalStateException("Could not find stock with symbol [ " + symbol + " ]. Please try again with the correct symbol!!");
         }
         return dividendYield;
     }
 
-    private Double calculateDividendYield(Double marketPrice, Double dividendYield, Stock stock) {
+    private Double calculateDividendYield(Double marketPrice, Stock stock) {
+        Double dividendYield;
         if (stock.getType() == StockType.COMMON) {
             dividendYield = stock.getLastDividend() / marketPrice;
         } else if (stock.getType() == StockType.PREFERRED) {

@@ -1,11 +1,13 @@
 package io.joamit.supersimplestocks.repository;
 
 import io.joamit.supersimplestocks.domain.Stock;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.webmvc.RepositoryRestController;
 
-import java.util.List;
+import java.util.Optional;
 
-public interface StockRepository extends CrudRepository<Stock, String> {
+@RepositoryRestController
+public interface StockRepository extends JpaRepository<Stock, String> {
 
-    List<Stock> findByParValue(Double parValue);
+    Optional<Stock> findById(String symbol);
 }

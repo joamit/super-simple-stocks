@@ -1,21 +1,32 @@
 package io.joamit.supersimplestocks.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Stock {
 
-    private String symbol;
+    @Id
+    private String id;
+
     private StockType type;
     private Double lastDividend;
     private Double fixedDividend;
     private Double parValue;
     private Double price;
 
-
-    public String getSymbol() {
-        return symbol;
+    public Stock() {
     }
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public StockType getType() {
